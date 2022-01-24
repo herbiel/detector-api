@@ -20,23 +20,14 @@ conn = pymysql.connect(
     db='detector-call'
 )
 
-def insert_data(numberlist):
+def insert_data(taskid,numberlist):
     create_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     uuid_str = uuid.uuid4()
     for number in numberlist:
-        sql = 'INSERT INTO record(number,idle,create_time,uuid) VALUES("%s","%s","%s")' % (number, "True",create_time,uuid_str)
+        sql = 'INSERT INTO record(taskid,number,idle,create_time,uuid) VALUES("%s""%s","%s","%s")' %(taskid,number, "True",create_time,uuid_str)
         cur = conn.cursor()
         cur.execute(sql)
     cur.close()
     conn.commit()
     conn.close()
 
-def update_data():
-    pass
-
-def get_data(task_id):
-
-    pass
-
-def update_data(uuid):
-    pass

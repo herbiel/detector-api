@@ -25,9 +25,9 @@ class Item(BaseModel):
 
 
 @app.post("/detector")
-async def detector( item: Item):
+async def detector(item: Item,taskid:str):
     ##存入数据库
-    insert_data(item.number)
+    insert_data(item.number,taskid)
     ##批量取出识别
     ##结果存入数据库
-    return "hello world"
+    return "200"
